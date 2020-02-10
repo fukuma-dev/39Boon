@@ -6,24 +6,37 @@
           start()
           jpSpeech(phrase[num].jp)
         "
+        type="primary"
+        class="start-btn"
       >
-        開始しますか？
+        トレーニング開始！
       </el-button>
+      <p>※ 音が鳴りますのでご注意ください</p>
     </div>
     <div v-if="isStart">
-      <p class="jp-phrase">{{ phrase[num].jp }}</p>
-      <el-button
-        v-if="!isAnswer"
-        @click="
-          toAnswer()
-          enSpeech(phrase[num].en)
-        "
-      >
-        答え
-      </el-button>
+      <el-progress :percentage="num * 10" width="120"></el-progress>
+      <div v-if="num < 10">
+        <p class="jp-phrase">{{ phrase[num].jp }}</p>
+        <el-button
+          v-if="!isAnswer"
+          @click="
+            toAnswer()
+            enSpeech(phrase[num].en)
+          "
+        >
+          答え
+        </el-button>
+      </div>
+      <div v-if="num === 10">
+        <p class="jp-phrase">お疲れ様です！</p>
+        <el-button @click="end()">
+          終了する
+        </el-button>
+      </div>
       <div v-if="isAnswer">
         <p class="en-phrase">{{ phrase[num].en }}</p>
         <el-button
+          v-if="num < 10"
           @click="
             next()
             jpSpeech(phrase[num].jp)
@@ -37,16 +50,16 @@
 </template>
 <script>
 export default {
-  asyncData({ params }) {
-    return {
-      phrase: require(`~/assets/json/${params.id}.json`)
-    }
-  },
   data() {
     return {
       num: 0,
       isStart: false,
       isAnswer: false
+    }
+  },
+  asyncData({ params }) {
+    return {
+      phrase: require(`~/assets/json/${params.id}.json`)
     }
   },
   methods: {
@@ -59,6 +72,9 @@ export default {
     },
     toAnswer() {
       this.isAnswer = true
+    },
+    end() {
+      this.$router.push('/')
     },
     jpSpeech(jpText) {
       const ssu = new SpeechSynthesisUtterance()
@@ -80,6 +96,9 @@ export default {
 .wrapper {
   margin: 200px 0;
   text-align: center;
+}
+.start-btn {
+  font-size: 20px;
 }
 .jp-phrase {
   font-size: 1.5rem;
