@@ -9,9 +9,11 @@
       </p>
     </el-row>
     <el-row>
-      <el-dropdown @command="goLesson">
-        <el-button type="primary" class="select-btn">
-          コースを選択<i class="el-icon-arrow-down el-icon--right"></i>
+      <el-dropdown @command="goTraining">
+        <el-button type="success" class="select-btn">
+          トレーニングメニューを選択<i
+            class="el-icon-arrow-down el-icon--right"
+          ></i>
         </el-button>
         <el-dropdown-menu slot="dropdown">
           <el-dropdown-item
@@ -41,8 +43,8 @@ export default {
     }
   },
   methods: {
-    goLesson(command) {
-      this.$router.push({ path: `lesson/${command}` })
+    goTraining(command) {
+      this.$router.push({ path: `train/${command}` })
     }
   }
 }
