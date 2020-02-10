@@ -9,22 +9,20 @@
       </p>
     </el-row>
     <el-row>
-      <el-select
-        @change="goLesson(value)"
-        v-model="value"
-        placeholder="コースを選ぼう！"
-        size="large"
-        class="select-menu"
-      >
-        <el-option
-          v-for="item in options"
-          :key="item.value"
-          :label="item.label"
-          :value="item.value"
-          class="select-options"
-        >
-        </el-option>
-      </el-select>
+      <el-dropdown @command="goLesson">
+        <el-button type="primary">
+          コースを選択<i class="el-icon-arrow-down el-icon--right"></i>
+        </el-button>
+        <el-dropdown-menu slot="dropdown">
+          <el-dropdown-item
+            v-for="item in options"
+            :key="item.value"
+            :command="item.value"
+          >
+            {{ item.label }}
+          </el-dropdown-item>
+        </el-dropdown-menu>
+      </el-dropdown>
     </el-row>
   </div>
 </template>
@@ -43,8 +41,8 @@ export default {
     }
   },
   methods: {
-    goLesson(value) {
-      this.$router.push({ path: `lesson/${value}` })
+    goLesson(command) {
+      this.$router.push({ path: `lesson/${command}` })
     }
   }
 }
