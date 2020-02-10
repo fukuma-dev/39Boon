@@ -22,13 +22,13 @@
         ></el-progress>
       </el-row>
       <el-row>
-        <div style="height: 100px">
+        <div class="phrase-text">
           <p v-if="num < 10" class="jp-phrase">{{ phrase[num].jp }}</p>
           <p v-else class="jp-phrase">10問終了！お疲れ様でした。</p>
         </div>
       </el-row>
       <v-row>
-        <div style="height: 100px">
+        <div class="phrase-text">
           <p v-if="isAnswer" class="en-phrase">{{ phrase[num].en }}</p>
         </div>
       </v-row>
@@ -107,7 +107,7 @@ export default {
 
 <style scoped>
 .wrapper {
-  margin: 100px 0;
+  margin-top: 50px;
   text-align: center;
 }
 .start-btn {
@@ -115,10 +115,14 @@ export default {
 }
 .jp-phrase {
   font-size: 1.2rem;
-  margin: 20px 10px;
+  margin: 0px 10px;
 }
 .en-phrase {
   font-size: 1.2rem;
   margin: 0px 10px;
+}
+.phrase-text {
+  height: 60px;
+  margin: 20px 0;
 }
 </style>
