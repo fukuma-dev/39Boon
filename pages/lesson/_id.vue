@@ -37,16 +37,16 @@
 </template>
 <script>
 export default {
+  asyncData({ params }) {
+    return {
+      phrase: require(`~/assets/json/${params.id}.json`)
+    }
+  },
   data() {
     return {
       num: 0,
       isStart: false,
       isAnswer: false
-    }
-  },
-  asyncData({ params }) {
-    return {
-      phrase: require(`~/assets/json/${params.id}.json`)
     }
   },
   methods: {
