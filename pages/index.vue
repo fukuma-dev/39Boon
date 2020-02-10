@@ -13,6 +13,7 @@
         @change="goLesson(value)"
         v-model="value"
         placeholder="コースを選ぼう！"
+        size="large"
         class="select-menu"
       >
         <el-option
@@ -68,9 +69,6 @@ export default {
   font-weight: bold;
   font-family: 'M PLUS Rounded 1c';
   margin: 40px 0;
-}
-.select-menu {
-  color: black;
 }
 .select-options {
   font-size: 16px;
