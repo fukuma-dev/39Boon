@@ -12,13 +12,15 @@
       <el-select
         @change="goLesson(value)"
         v-model="value"
-        placeholder="Choose a course!"
+        placeholder="コースを選ぼう！"
+        class="select-menu"
       >
         <el-option
           v-for="item in options"
           :key="item.value"
           :label="item.label"
           :value="item.value"
+          class="select-options"
         >
         </el-option>
       </el-select>
@@ -34,14 +36,6 @@ export default {
         {
           value: 'eikaiwa',
           label: '日常会話'
-        },
-        {
-          value: 'Option2',
-          label: 'Option2'
-        },
-        {
-          value: 'Option3',
-          label: 'Option3'
         }
       ],
       value: ''
@@ -74,5 +68,11 @@ export default {
   font-weight: bold;
   font-family: 'M PLUS Rounded 1c';
   margin: 40px 0;
+}
+.select-menu {
+  color: black;
+}
+.select-options {
+  font-size: 16px;
 }
 </style>
