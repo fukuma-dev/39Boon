@@ -24,7 +24,7 @@
 		"en": "How long have you been in here?"
 	},
 	{
-		"jp": "質問してもいい?(質問してもいいですか？)",
+		"jp": "質問してもいい?",
 		"en": "Can (May) I ask a question?"
 	},
 	{
@@ -46,5 +46,93 @@
 	{
 		"jp": "銀行へ連れて行ってもらえますか？",
 		"en": "Could you take me to the bank?"
+	},
+	{
+		"jp": "何か変わったことあった?",
+		"en": "What's up?"
+	},
+	{
+		"jp": "どういうスペルなの?",
+		"en": "How do you spell it?"
+	},
+	{
+		"jp": "もう一度説明してもらえませんか?",
+		"en": "Could you explain it again?"
+	},
+	{
+		"jp": "理解できますか？",
+		"en": "Does it make sense? / Do you understand?"
+	},
+	{
+		"jp": "授業のあとに時間はありますか?",
+		"en": "Do you have time after this class?"
+	},
+	{
+		"jp": "ちょっと気になっただけだよ",
+		"en": "I was just wondering."
+	},
+	{
+		"jp": "やらなきゃよかった。",
+		"en": "I shouldn't have done that."
+	},
+	{
+		"jp": "気にしないよ",
+		"en": "I don't care."
+	},
+	{
+		"jp": "いつここへ来たの?",
+		"en": "When did you come here?"
+	},
+	{
+		"jp": "あなた次第です",
+		"en": "It's up to you."
+	},
+	{
+		"jp": "彼女がいつ来るか知ってる?",
+		"en": "Do you know when she will come?"
+	},
+	{
+		"jp": "急いでやってください。",
+		"en": "Please do it quickly"
+	},
+	{
+		"jp": "あやうく間違いをするところでした。",
+		"en": "I nearly made a mistake."
+	},
+	{
+		"jp": "すごく腹が減っています。",
+		"en": "I am terribly hungry."
+	},
+	{
+		"jp": "これは意味がありません。",
+		"en": "This makes no sense."
+	},
+	{
+		"jp": "なるほど！",
+		"en": "That makes sense. / I got it!"
+	},
+	{
+		"jp": "どこに行きましょうか?",
+		"en": "Where should we go?"
+	},
+	{
+		"jp": "そんな遠くありません。",
+		"en": "It's not so far."
+	},
+	{
+		"jp": "それに私も加えておいて。",
+		"en": "Count me in."
+	},
+	{
+		"jp": "支払いは割り勘にしましょう。",
+		"en": "Let's split the bill."
+	},
+	{
+		"jp": "空席はありますか?",
+		"en": "Are seats available?"
+	},
+	{
+		"jp": "遊びに来て！",
+		"en": "Come and see me!"
 	}
 ]
