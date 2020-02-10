@@ -21,39 +21,42 @@
           width="120"
         ></el-progress>
       </el-row>
-      <div v-if="num < 10">
-        <el-row>
-          <p class="jp-phrase">{{ phrase[num].jp }}</p>
-        </el-row>
-      </div>
-      <div v-if="isAnswer">
-        <p class="en-phrase">{{ phrase[num].en }}</p>
-      </div>
+      <el-row>
+        <div style="height: 100px">
+          <p v-if="num < 10" class="jp-phrase">{{ phrase[num].jp }}</p>
+          <p v-else class="jp-phrase">10問終了！お疲れ様でした。</p>
+        </div>
+      </el-row>
       <v-row>
-        <div v-if="num === 10">
-          <p class="jp-phrase">10問終了！お疲れ様でした。</p>
-          <el-button @click="end()">
+        <div style="height: 100px">
+          <p v-if="isAnswer" class="en-phrase">{{ phrase[num].en }}</p>
+        </div>
+      </v-row>
+      <!-- ボタン群 -->
+      <v-row>
+        <div>
+          <el-button
+            v-if="!isAnswer && num !== 10"
+            @click="
+              toAnswer()
+              enSpeech(phrase[num].en)
+            "
+          >
+            答え
+          </el-button>
+          <el-button
+            v-if="isAnswer && num < 10"
+            @click="
+              next()
+              jpSpeech(phrase[num].jp)
+            "
+          >
+            次のフレーズへ
+          </el-button>
+          <el-button v-if="num === 10" @click="end()">
             終了する
           </el-button>
         </div>
-        <el-button
-          v-if="!isAnswer && num !== 10"
-          @click="
-            toAnswer()
-            enSpeech(phrase[num].en)
-          "
-        >
-          答え
-        </el-button>
-        <el-button
-          v-if="isAnswer && num < 10"
-          @click="
-            next()
-            jpSpeech(phrase[num].jp)
-          "
-        >
-          次のフレーズへ
-        </el-button>
       </v-row>
     </div>
   </div>
@@ -111,9 +114,11 @@ export default {
   font-size: 20px;
 }
 .jp-phrase {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
+  margin: 20px 10px;
 }
 .en-phrase {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
+  margin: 0px 10px;
 }
 </style>
