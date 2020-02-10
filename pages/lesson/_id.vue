@@ -26,18 +26,18 @@
           <p class="jp-phrase">{{ phrase[num].jp }}</p>
         </el-row>
       </div>
-      <!-- <div v-if="num === 10">
-        <p class="jp-phrase">お疲れ様です！</p>
-        <el-button @click="end()">
-          終了する
-        </el-button>
-      </div> -->
       <div v-if="isAnswer">
         <p class="en-phrase">{{ phrase[num].en }}</p>
       </div>
       <v-row>
+        <div v-if="num === 10">
+          <p class="jp-phrase">10問終了！お疲れ様でした。</p>
+          <el-button @click="end()">
+            終了する
+          </el-button>
+        </div>
         <el-button
-          v-if="!isAnswer"
+          v-if="!isAnswer && num !== 10"
           @click="
             toAnswer()
             enSpeech(phrase[num].en)
@@ -52,7 +52,7 @@
             jpSpeech(phrase[num].jp)
           "
         >
-          次へ
+          次のフレーズへ
         </el-button>
       </v-row>
     </div>
