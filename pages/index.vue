@@ -10,7 +10,7 @@
     </el-row>
     <el-row>
       <el-dropdown @command="goLesson">
-        <el-button type="primary">
+        <el-button type="primary" class="select-btn">
           コースを選択<i class="el-icon-arrow-down el-icon--right"></i>
         </el-button>
         <el-dropdown-menu slot="dropdown">
@@ -68,7 +68,7 @@ export default {
   font-family: 'M PLUS Rounded 1c';
   margin: 40px 0;
 }
-.select-options {
+.select-btn {
   font-size: 16px;
 }
 </style>
