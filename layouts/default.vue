@@ -1,6 +1,6 @@
 <template>
   <el-container>
-    <el-header v-if="$route.name !== 'index'" style="padding: 0px">
+    <el-header v-show="$route.name !== 'index'" style="padding: 0px">
       <custom-header />
     </el-header>
     <el-main style="padding: 0px">
