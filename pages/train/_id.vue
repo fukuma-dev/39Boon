@@ -1,6 +1,7 @@
 <template>
   <div class="text-center wrapper">
-    <div v-if="!isStart">
+    <!-- トレーニング開始前 -->
+    <div v-if="!isStart" class="confirm">
       <el-button
         @click="
           start()
@@ -13,51 +14,55 @@
       </el-button>
       <p>※ 音が鳴りますのでご注意ください</p>
     </div>
+    <!-- トレーニング開始後 -->
     <div v-if="isStart">
       <el-row>
         <el-progress
-          :percentage="num * 10"
+          :percentage="progress * limit"
           type="dashboard"
           width="120"
         ></el-progress>
       </el-row>
       <el-row>
         <div class="phrase-text">
-          <p v-if="num < 10" class="jp-phrase">{{ phrase[num].jp }}</p>
+          <p v-if="num < limit" class="jp-phrase">{{ phrase[num].jp }}</p>
           <p v-else class="jp-phrase">10問終了！お疲れ様でした。</p>
         </div>
       </el-row>
-      <v-row>
+      <el-row>
         <div class="phrase-text">
           <p v-if="isAnswer" class="en-phrase">{{ phrase[num].en }}</p>
         </div>
-      </v-row>
+      </el-row>
       <!-- ボタン群 -->
-      <v-row>
+      <el-row>
         <div>
           <el-button
-            v-if="!isAnswer && num !== 10"
+            v-if="!isAnswer && progress !== limit"
             @click="
               toAnswer()
               enSpeech(phrase[num].en)
             "
+            type="info"
           >
-            答え
+            答えを見る
           </el-button>
           <el-button
-            v-if="isAnswer && num < 10"
+            v-if="isAnswer && progress < limit"
             @click="
               next()
               jpSpeech(phrase[num].jp)
             "
+            type="info"
           >
             次のフレーズへ
           </el-button>
-          <el-button v-if="num === 10" @click="end()">
-            終了する
+
+          <el-button v-if="progress === limit" @click="end()" type="danger">
+            トレーニングを終了する
           </el-button>
         </div>
-      </v-row>
+      </el-row>
     </div>
   </div>
 </template>
@@ -66,13 +71,28 @@ export default {
   data() {
     return {
       num: 0,
+      progress: 0,
+      limit: 10,
       isStart: false,
       isAnswer: false
     }
   },
   asyncData({ params }) {
+    const data = require(`~/assets/json/${params.id}.json`)
+    const num = 10
+    const t = []
+    const r = []
+    let l = data.length
+    let n = num < l ? num : l
+    while (n-- > 0) {
+      const i = (Math.random() * l) | 0
+      r[n] = t[i] || data[i]
+      --l
+      t[i] = t[l] || data[l]
+    }
+
     return {
-      phrase: require(`~/assets/json/${params.id}.json`)
+      phrase: r
     }
   },
   methods: {
@@ -85,6 +105,7 @@ export default {
     },
     toAnswer() {
       this.isAnswer = true
+      this.progress = this.progress + 1
     },
     end() {
       this.$router.push('/')
@@ -109,6 +130,9 @@ export default {
 .wrapper {
   margin-top: 50px;
   text-align: center;
+}
+.confirm {
+  margin: 200px 0;
 }
 .start-btn {
   font-size: 20px;
