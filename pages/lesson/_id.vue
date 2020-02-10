@@ -14,9 +14,28 @@
       <p>※ 音が鳴りますのでご注意ください</p>
     </div>
     <div v-if="isStart">
-      <el-progress :percentage="num * 10" width="120"></el-progress>
+      <el-row>
+        <el-progress
+          :percentage="num * 10"
+          type="dashboard"
+          width="120"
+        ></el-progress>
+      </el-row>
       <div v-if="num < 10">
-        <p class="jp-phrase">{{ phrase[num].jp }}</p>
+        <el-row>
+          <p class="jp-phrase">{{ phrase[num].jp }}</p>
+        </el-row>
+      </div>
+      <!-- <div v-if="num === 10">
+        <p class="jp-phrase">お疲れ様です！</p>
+        <el-button @click="end()">
+          終了する
+        </el-button>
+      </div> -->
+      <div v-if="isAnswer">
+        <p class="en-phrase">{{ phrase[num].en }}</p>
+      </div>
+      <v-row>
         <el-button
           v-if="!isAnswer"
           @click="
@@ -26,17 +45,8 @@
         >
           答え
         </el-button>
-      </div>
-      <div v-if="num === 10">
-        <p class="jp-phrase">お疲れ様です！</p>
-        <el-button @click="end()">
-          終了する
-        </el-button>
-      </div>
-      <div v-if="isAnswer">
-        <p class="en-phrase">{{ phrase[num].en }}</p>
         <el-button
-          v-if="num < 10"
+          v-if="isAnswer && num < 10"
           @click="
             next()
             jpSpeech(phrase[num].jp)
@@ -44,7 +54,7 @@
         >
           次へ
         </el-button>
-      </div>
+      </v-row>
     </div>
   </div>
 </template>
@@ -94,7 +104,7 @@ export default {
 
 <style scoped>
 .wrapper {
-  margin: 200px 0;
+  margin: 100px 0;
   text-align: center;
 }
 .start-btn {

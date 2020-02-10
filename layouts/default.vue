@@ -1,7 +1,7 @@
 <template>
   <el-container>
     <el-header v-if="$route.name !== 'index'" style="padding: 0px">
-      <!-- <custom-header /> -->
+      <custom-header />
     </el-header>
     <el-main style="padding: 0px">
       <nuxt />
@@ -12,7 +12,7 @@
 <script>
 export default {
   components: {
-    // CustomHeader: () => import('~/components/TheHeader.vue')
+    CustomHeader: () => import('~/components/TheHeader.vue')
   }
 }
 </script>
