@@ -9,19 +9,17 @@
       </p>
     </el-row>
     <el-row>
-      <div class="block">
-        <el-cascader
-          v-model="value"
-          :options="options"
-          @change="goTraining"
-          placeholder="トレーニングを選択"
-        >
-          <template slot-scope="{ node, data }">
-            <span>{{ data.label }}</span>
-            <span v-if="!node.isLeaf"> ({{ data.children.length }}) </span>
-          </template>
-        </el-cascader>
-      </div>
+      <el-cascader
+        :options="options"
+        @change="goTraining"
+        placeholder="トレーニングを選択"
+        class="cascader"
+      >
+        <template slot-scope="{ node, data }">
+          <span>{{ data.label }}</span>
+          <span v-if="!node.isLeaf"> ({{ data.children.length }}) </span>
+        </template>
+      </el-cascader>
     </el-row>
   </div>
 </template>
@@ -36,17 +34,10 @@ export default {
           label: '日常会話'
         },
         {
-          value: 'grammar',
-          label: '英文法',
-          children: [
-            {
-              value: 'grammar-present-perfect',
-              label: '現在完了'
-            }
-          ]
+          value: 'grammar-present-perfect',
+          label: '英文法: 現在完了'
         }
-      ],
-      value: ''
+      ]
     }
   },
   methods: {
@@ -77,7 +68,7 @@ export default {
   font-family: 'M PLUS Rounded 1c';
   margin: 40px 0;
 }
-.select-btn {
-  font-size: 16px;
+.el-input__inner {
+  font-size: 26px;
 }
 </style>
