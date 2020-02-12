@@ -9,20 +9,19 @@
       </p>
     </el-row>
     <el-row>
-      <el-dropdown @command="goTraining">
-        <el-button type="success" class="select-btn">
-          トレーニングを選択<i class="el-icon-arrow-down el-icon--right"></i>
-        </el-button>
-        <el-dropdown-menu slot="dropdown">
-          <el-dropdown-item
-            v-for="item in options"
-            :key="item.value"
-            :command="item.value"
-          >
-            {{ item.label }}
-          </el-dropdown-item>
-        </el-dropdown-menu>
-      </el-dropdown>
+      <div class="block">
+        <el-cascader
+          v-model="value"
+          :options="options"
+          @change="goTraining"
+          placeholder="トレーニングを選択"
+        >
+          <template slot-scope="{ node, data }">
+            <span>{{ data.label }}</span>
+            <span v-if="!node.isLeaf"> ({{ data.children.length }}) </span>
+          </template>
+        </el-cascader>
+      </div>
     </el-row>
   </div>
 </template>
@@ -37,8 +36,14 @@ export default {
           label: '日常会話'
         },
         {
-          value: 'grammar-present-perfect',
-          label: '英文法: 現在完了'
+          value: 'grammar',
+          label: '英文法',
+          children: [
+            {
+              value: 'grammar-present-perfect',
+              label: '現在完了'
+            }
+          ]
         }
       ],
       value: ''
