@@ -11,9 +11,7 @@
     <el-row>
       <el-dropdown @command="goTraining">
         <el-button type="success" class="select-btn">
-          トレーニングメニューを選択<i
-            class="el-icon-arrow-down el-icon--right"
-          ></i>
+          トレーニングを選択<i class="el-icon-arrow-down el-icon--right"></i>
         </el-button>
         <el-dropdown-menu slot="dropdown">
           <el-dropdown-item
@@ -37,6 +35,10 @@ export default {
         {
           value: 'eikaiwa',
           label: '日常会話'
+        },
+        {
+          value: 'grammar-present-perfect',
+          label: '英文法: 現在完了'
         }
       ],
       value: ''
