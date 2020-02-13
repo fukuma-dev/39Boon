@@ -94,11 +94,11 @@ export default {
   },
   asyncData({ params }) {
     const data = require(`~/assets/json/${params.id}.json`)
-    const num = 10
+    const count = 10
     const t = []
     const r = []
     let l = data.length
-    let n = num < l ? num : l
+    let n = count < l ? count : l
     while (n-- > 0) {
       const i = (Math.random() * l) | 0
       r[n] = t[i] || data[i]
