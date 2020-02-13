@@ -1,6 +1,7 @@
-# sakuboon
+# 39Boon!!
 
-> to practice speaking-english
+> 瞬間英作文という英会話トレーニングをwebで実現したアプリ
+> 製作2日間
 
 ## Build Setup
 
