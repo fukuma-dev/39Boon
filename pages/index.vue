@@ -13,12 +13,7 @@
         :options="options"
         @change="goTraining"
         placeholder="トレーニングを選択"
-        class="cascader"
       >
-        <template slot-scope="{ node, data }">
-          <span>{{ data.label }}</span>
-          <span v-if="!node.isLeaf"> ({{ data.children.length }}) </span>
-        </template>
       </el-cascader>
     </el-row>
   </div>
@@ -67,8 +62,5 @@ export default {
   font-weight: bold;
   font-family: 'M PLUS Rounded 1c';
   margin: 40px 0;
-}
-.el-input__inner {
-  font-size: 26px;
 }
 </style>
