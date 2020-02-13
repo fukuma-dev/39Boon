@@ -2,6 +2,7 @@
   <div class="text-center wrapper">
     <!-- トレーニング開始前 -->
     <div v-if="!isStart" class="confirm">
+      <p>表示される日本語文を<br />英語に翻訳しよう！</p>
       <el-button
         @click="
           start()
@@ -26,7 +27,6 @@
       <el-row>
         <div class="phrase-text">
           <p v-if="num < limit" class="jp-phrase">{{ phrase[num].jp }}</p>
-          <p v-else class="jp-phrase">10問終了！お疲れ様でした。</p>
         </div>
       </el-row>
       <el-row>
@@ -57,10 +57,25 @@
           >
             次のフレーズへ
           </el-button>
-
-          <el-button v-if="progress === limit" @click="end()" type="danger">
-            トレーニングを終了する
-          </el-button>
+          <div v-if="progress === limit">
+            <p>お疲れ様でした！</p>
+            <el-button @click="end()" type="danger">
+              トレーニングを終了する
+            </el-button>
+            <div style="margin: 10px 0">
+              <a
+                href="https://twitter.com/share?ref_src=twsrc%5Etfw"
+                class="twitter-share-button"
+                data-show-count="false"
+                >Tweet</a
+              >
+              <script
+                async
+                src="https://platform.twitter.com/widgets.js"
+                charset="utf-8"
+              ></script>
+            </div>
+          </div>
         </div>
       </el-row>
     </div>
