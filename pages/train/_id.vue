@@ -6,7 +6,7 @@
       <el-button
         @click="
           start()
-          jpSpeech(phrase[num].jp)
+          speech(phrase[num].jp, 'ja-JP')
         "
         type="primary"
         class="start-btn"
@@ -41,7 +41,7 @@
             v-if="!isAnswer && progress !== limit"
             @click="
               toAnswer()
-              enSpeech(phrase[num].en)
+              speech(phrase[num].en, 'en-US')
             "
             type="info"
           >
@@ -51,7 +51,7 @@
             v-if="isAnswer && progress < limit"
             @click="
               next()
-              jpSpeech(phrase[num].jp)
+              speech(phrase[num].jp, 'ja-JP')
             "
             type="info"
           >
@@ -62,19 +62,6 @@
             <el-button @click="end()" type="danger">
               トレーニングを終了する
             </el-button>
-            <div style="margin: 10px 0">
-              <a
-                href="https://twitter.com/share?ref_src=twsrc%5Etfw"
-                class="twitter-share-button"
-                data-show-count="false"
-                >Tweet</a
-              >
-              <script
-                async
-                src="https://platform.twitter.com/widgets.js"
-                charset="utf-8"
-              ></script>
-            </div>
           </div>
         </div>
       </el-row>
@@ -125,16 +112,11 @@ export default {
     end() {
       this.$router.push('/')
     },
-    jpSpeech(jpText) {
+    speech(text, language) {
+      speechSynthesis.cancel()
       const ssu = new SpeechSynthesisUtterance()
-      ssu.text = jpText
-      ssu.lang = 'ja-JP'
-      speechSynthesis.speak(ssu)
-    },
-    enSpeech(enText) {
-      const ssu = new SpeechSynthesisUtterance()
-      ssu.text = enText
-      ssu.lang = 'en-US'
+      ssu.text = text
+      ssu.lang = language
       speechSynthesis.speak(ssu)
     }
   }
