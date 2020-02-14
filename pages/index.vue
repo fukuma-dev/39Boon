@@ -31,6 +31,14 @@ export default {
         {
           value: 'grammar-present-perfect',
           label: '英文法: 現在完了'
+        },
+        {
+          value: 'grammar-passiveness',
+          label: '英文法: 受け身'
+        },
+        {
+          value: 'grammar-would',
+          label: 'wouldを使いこなそう!'
         }
       ]
     }

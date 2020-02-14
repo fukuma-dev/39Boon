@@ -54,5 +54,25 @@
 	{
 		"jp": "ヘンリーは以前に日本語を習ったことがありません。",
 		"en": "Henry has never learned Japanese before."
+	},
+	{
+		"jp": "私は2時間この本を読んでいます。",
+		"en": "I have been reading this book for two hours."
+	},
+	{
+		"jp": "君はどのくらいテレビを見ているんだい?",
+		"en": "How long have you been watching TV?"
+	},
+	{
+		"jp": "今朝からずっと雨だ。",
+		"en": "It has been raining since this morning."
+	},
+	{
+		"jp": "彼は恋人を何時間も待っている。",
+		"en": "He has been waiting for his girlfriend for hours."
+	},
+	{
+		"jp": "ナンシーはここで10年働いています。",
+		"en": "Nancy has been working here for ten years."
 	}
 ]
