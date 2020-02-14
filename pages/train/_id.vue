@@ -43,9 +43,16 @@
               toAnswer()
               speech(phrase[num].en, 'en-US')
             "
-            type="info"
+            type="success"
           >
             答えを見る
+          </el-button>
+          <el-button
+            v-if="isAnswer && progress < limit"
+            @click="speech(phrase[num].en, 'en-US')"
+            type="info"
+          >
+            もう一度聴く
           </el-button>
           <el-button
             v-if="isAnswer && progress < limit"
@@ -53,7 +60,7 @@
               next()
               speech(phrase[num].jp, 'ja-JP')
             "
-            type="info"
+            type="success"
           >
             次のフレーズへ
           </el-button>
