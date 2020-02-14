@@ -16,8 +16,10 @@
     "@nuxtjs/axios": "^5.3.6",
     "cross-env": "^5.2.0",
     "element-ui": "^2.4.11",
+    "node-sass": "^4.13.1",
     "nuxt": "^2.4.0",
-    "nuxt-webfontloader": "^1.1.0"
+    "nuxt-webfontloader": "^1.1.0",
+    "sass-loader": "^8.0.2"
   },
   "devDependencies": {
     "@nuxtjs/eslint-config": "^0.0.1",

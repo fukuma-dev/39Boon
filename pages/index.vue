@@ -30,11 +30,11 @@ export default {
         },
         {
           value: 'grammar-present-perfect',
-          label: '英文法: 現在完了'
+          label: '英文法 - 現在完了'
         },
         {
           value: 'grammar-passiveness',
-          label: '英文法: 受け身'
+          label: '英文法 - 受け身'
         },
         {
           value: 'grammar-would',
@@ -51,24 +51,23 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .hero {
+  color: #fff;
   height: 100vh;
   text-align: center;
   background: -moz-linear-gradient(top, #34558b 30%, #ff6f61 100%);
   background: -webkit-linear-gradient(top, #34558b 30%, #ff6f61 100%);
   background: linear-gradient(to bottom, #34558b 30%, #ff6f61 100%);
-}
-.hero__title {
-  color: #fff;
-  font-family: 'Fugaz One';
-  margin: 50px 0;
-  font-size: 2.5rem;
-}
-.hero__description {
-  color: #fff;
-  font-weight: bold;
-  font-family: 'M PLUS Rounded 1c';
-  margin: 40px 0;
+  &__title {
+    font-family: 'Fugaz One';
+    margin: 50px 0;
+    font-size: 2.5rem;
+  }
+  &__description {
+    font-weight: bold;
+    font-family: 'M PLUS Rounded 1c';
+    margin: 40px 0;
+  }
 }
 </style>
