@@ -9,12 +9,22 @@
       </p>
     </el-row>
     <el-row>
-      <el-cascader
-        :options="options"
-        @change="goTraining"
+      <el-select
+        @change="goTraining(value)"
+        v-model="value"
         placeholder="トレーニングを選択"
+        size="large"
+        class="select"
       >
-      </el-cascader>
+        <el-option
+          v-for="item in options"
+          :key="item.value"
+          :label="item.label"
+          :value="item.value"
+          style="font-size:16px"
+        >
+        </el-option>
+      </el-select>
     </el-row>
   </div>
 </template>
@@ -45,13 +55,14 @@ export default {
   },
   methods: {
     goTraining(command) {
+      console.log(command)
       this.$router.push({ path: `train/${command}` })
     }
   }
 }
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
 .hero {
   color: #fff;
   height: 100vh;
@@ -69,5 +80,8 @@ export default {
     font-family: 'M PLUS Rounded 1c';
     margin: 40px 0;
   }
+}
+.el-select > .el-input {
+  font-size: 16px;
 }
 </style>
