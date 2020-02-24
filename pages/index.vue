@@ -9,22 +9,29 @@
       </p>
     </el-row>
     <el-row>
-      <el-select
-        @change="goTraining(value)"
-        v-model="value"
-        placeholder="トレーニングを選択"
-        size="large"
-        class="select"
-      >
-        <el-option
-          v-for="item in options"
-          :key="item.value"
-          :label="item.label"
-          :value="item.value"
-          style="font-size:16px"
-        >
-        </el-option>
-      </el-select>
+      <!-- <el-dropdown>
+        <el-button type="success">
+          トレーニングを選択<i class="el-icon-arrow-down el-icon--right"></i>
+        </el-button>
+        <el-dropdown-menu slot="dropdown">
+          <el-dropdown-item>Action 1</el-dropdown-item>
+        </el-dropdown-menu>
+      </el-dropdown> -->
+      <el-dropdown @command="goTraining">
+        <el-button type="success" class="select-btn">
+          トレーニングを選択<i class="el-icon-arrow-down el-icon--right"></i>
+        </el-button>
+        <el-dropdown-menu slot="dropdown">
+          <el-dropdown-item
+            v-for="item in options"
+            :key="item.value"
+            :command="item.value"
+            style="font-size: 16px;"
+          >
+            {{ item.label }}
+          </el-dropdown-item>
+        </el-dropdown-menu>
+      </el-dropdown>
     </el-row>
   </div>
 </template>
@@ -80,7 +87,7 @@ export default {
     margin: 40px 0;
   }
 }
-.el-select > .el-input {
+.el-dropdown > .el-button {
   font-size: 16px;
 }
 </style>
