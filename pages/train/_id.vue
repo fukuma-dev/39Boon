@@ -6,7 +6,7 @@
       <el-button
         @click="
           start()
-          speech(phrase[num].jp, 'ja-JP')
+          speech(phrase[num].jp, 'ja-JP', 'Kyoko')
         "
         type="primary"
         class="start-btn"
@@ -41,7 +41,7 @@
             v-if="!isAnswer && progress !== limit"
             @click="
               toAnswer()
-              speech(phrase[num].en, 'en-US')
+              speech(phrase[num].en, 'en-US', 'Alex')
             "
             type="success"
           >
@@ -49,7 +49,7 @@
           </el-button>
           <el-button
             v-if="isAnswer && progress < limit"
-            @click="speech(phrase[num].en, 'en-US')"
+            @click="speech(phrase[num].en, 'en-US', 'Alex')"
             type="info"
           >
             もう一度聴く
@@ -58,7 +58,7 @@
             v-if="isAnswer && progress < limit"
             @click="
               next()
-              speech(phrase[num].jp, 'ja-JP')
+              speech(phrase[num].jp, 'ja-JP', 'Kyoko')
             "
             type="success"
           >
@@ -119,11 +119,14 @@ export default {
     end() {
       this.$router.push('/')
     },
-    speech(text, language) {
+    speech(text, language, name) {
       speechSynthesis.cancel()
       const ssu = new SpeechSynthesisUtterance()
       ssu.text = text
       ssu.lang = language
+      ssu.voice = speechSynthesis
+        .getVoices()
+        .filter(voice => voice.name === name)[0]
       speechSynthesis.speak(ssu)
     }
   }

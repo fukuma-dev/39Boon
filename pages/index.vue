@@ -55,7 +55,6 @@ export default {
   },
   methods: {
     goTraining(command) {
-      console.log(command)
       this.$router.push({ path: `train/${command}` })
     }
   }
